@@ -104,5 +104,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="GiveCardRecord">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.GiveCardRecord">
+        <MappingFragment StoreEntitySet="GiveCardRecord">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="GiveTime" ColumnName="GiveTime" />
+          <ScalarProperty Name="CardID" ColumnName="CardID" />
+          <ScalarProperty Name="ToOpenID" ColumnName="ToOpenID" />
+          <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -14,15 +14,21 @@
     </AssociationSet>
     <EntitySet Name="TimeRecord" EntityType="YL_NewYear2020Model.TimeRecord" />
     <EntitySet Name="AiQiYi" EntityType="YL_NewYear2020Model.AiQiYi" />
+    <EntitySet Name="GiveCardRecord" EntityType="YL_NewYear2020Model.GiveCardRecord" />
+    <AssociationSet Name="FK_GiveCardRecord_CardList" Association="YL_NewYear2020Model.FK_GiveCardRecord_CardList">
+      <End Role="CardList" EntitySet="CardList" />
+      <End Role="GiveCardRecord" EntitySet="GiveCardRecord" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="CardList">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CardName" Type="String" Nullable="false" MaxLength="500" FixedLength="true" Unicode="true" />
+    <Property Name="CardName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="Total" Type="Int32" Nullable="false" />
     <Property Name="TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="GiveCardRecord" Relationship="YL_NewYear2020Model.FK_GiveCardRecord_CardList" FromRole="CardList" ToRole="GiveCardRecord" />
   </EntityType>
   <EntityType Name="Employing">
     <Key>
@@ -123,4 +129,28 @@
     <Property Name="OpenID" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
     <Property Name="ChouTime" Type="DateTime" Precision="3" />
   </EntityType>
+  <EntityType Name="GiveCardRecord">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OpenID" Type="String" Nullable="false" MaxLength="1000" FixedLength="true" Unicode="true" />
+    <Property Name="ToOpenID" Type="String" Nullable="false" MaxLength="1000" FixedLength="true" Unicode="true" />
+    <Property Name="CardID" Type="Int32" Nullable="false" />
+    <Property Name="GiveTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CardList" Relationship="YL_NewYear2020Model.FK_GiveCardRecord_CardList" FromRole="GiveCardRecord" ToRole="CardList" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_GiveCardRecord_CardList">
+    <End Type="YL_NewYear2020Model.CardList" Role="CardList" Multiplicity="1" />
+    <End Type="YL_NewYear2020Model.GiveCardRecord" Role="GiveCardRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardList">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GiveCardRecord">
+        <PropertyRef Name="CardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

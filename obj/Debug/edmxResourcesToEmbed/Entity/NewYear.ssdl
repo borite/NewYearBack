@@ -14,7 +14,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CardName" Type="nchar" MaxLength="500" Nullable="false" />
+    <Property Name="CardName" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="Total" Type="int" Nullable="false" />
     <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
@@ -51,6 +51,17 @@
     <Property Name="OpenID" Type="nchar" MaxLength="500" />
     <Property Name="GameType" Type="tinyint" Nullable="false" />
     <Property Name="AddTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GiveCardRecord">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpenID" Type="nchar" MaxLength="1000" Nullable="false" />
+    <Property Name="ToOpenID" Type="nchar" MaxLength="1000" Nullable="false" />
+    <Property Name="CardID" Type="int" Nullable="false" />
+    <Property Name="GiveTime" Type="datetime" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="PrizeList">
     <Key>
@@ -94,6 +105,18 @@
     <Property Name="HeadIMG" Type="nchar" MaxLength="1000" />
     <Property Name="ISChou" Type="bit" Nullable="false" />
   </EntityType>
+  <Association Name="FK_GiveCardRecord_CardList">
+    <End Role="CardList" Type="Self.CardList" Multiplicity="1" />
+    <End Role="GiveCardRecord" Type="Self.GiveCardRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardList">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GiveCardRecord">
+        <PropertyRef Name="CardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_User_PrizeList">
     <End Role="PrizeList" Type="Self.PrizeList" Multiplicity="0..1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -113,9 +136,14 @@
     <EntitySet Name="ErrorText" EntityType="Self.ErrorText" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GameManager" EntityType="Self.GameManager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiveCardRecord" EntityType="Self.GiveCardRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PrizeList" EntityType="Self.PrizeList" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimeRecord" EntityType="Self.TimeRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_GiveCardRecord_CardList" Association="Self.FK_GiveCardRecord_CardList">
+      <End Role="CardList" EntitySet="CardList" />
+      <End Role="GiveCardRecord" EntitySet="GiveCardRecord" />
+    </AssociationSet>
     <AssociationSet Name="FK_User_PrizeList" Association="Self.FK_User_PrizeList">
       <End Role="PrizeList" EntitySet="PrizeList" />
       <End Role="User" EntitySet="User" />

@@ -1,4 +1,4 @@
-﻿// 为模型“F:\刘赫阳的项目\原本唐\伊利\2020新年游戏\程序\NewYear2020\NewYear2020\Entity\NewYear.edmx”启用了 T4 代码生成。
+﻿// 为模型“F:\项目\伊利项目\new2020\NewYearBack\Entity\NewYear.edmx”启用了 T4 代码生成。
 // 要启用旧代码生成功能，请将“代码生成策略”设计器属性的值
 // 更改为“旧的 ObjectContext”。当在设计器中打开该模型时，此属性会出现在
 // “属性”窗口中。

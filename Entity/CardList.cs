@@ -14,9 +14,18 @@ namespace NewYear2020.Entity
     
     public partial class CardList
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CardList()
+        {
+            this.GiveCardRecord = new HashSet<GiveCardRecord>();
+        }
+    
         public int ID { get; set; }
         public string CardName { get; set; }
         public int Total { get; set; }
         public byte[] TimeStamp { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GiveCardRecord> GiveCardRecord { get; set; }
     }
 }

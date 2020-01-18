@@ -199,9 +199,9 @@ namespace NewYear2020.Controllers
         public IHttpActionResult ChouCard(string openID, int GameType)
         {
             //五天日期
-            DateTime end1 = new DateTime(2020, 1, 17);
-            DateTime end21 = new DateTime(2020, 1, 21);
-            DateTime end22 = new DateTime(2020, 1, 22);
+            DateTime end1 = new DateTime(2020, 1, 18);
+            DateTime end21 = new DateTime(2020, 1, 19);
+            DateTime end22 = new DateTime(2020, 1, 20);
             DateTime end23 = new DateTime(2020, 1, 23);
             DateTime end24 = new DateTime(2020, 1, 24);
             //时间判断布尔判断是否是今天
@@ -468,6 +468,210 @@ namespace NewYear2020.Controllers
 
 
 
+        }
+
+
+        //尊重卡换一次抽卡的机会
+
+
+        //[HttpGet, Route("ZZKSwitchCard")]
+        //public IHttpActionResult ZZKSwitchCard([FromUri] string OpenID)
+        //{
+        //    var user = NY.User.Where(a => a.OpenID == OpenID && a.c6zzk > 0).FirstOrDefault();
+
+        //    user.c6zzk -= 1;
+        //    NY.SaveChanges();
+
+
+
+
+
+        //}
+
+
+        /// <summary>
+        /// 用户送卡
+        /// </summary>
+        /// <param name="OpenID">发起赠送的用户</param>
+        /// <param name="toopenID">被给予的用户</param>
+        /// <param name="CardID">1.属你富2.鼠你美4.鼠你强5.鼠你甜6.鼠你乐7.尊重卡</param>
+        /// <returns></returns>
+        [HttpGet, Route("ZZKSwitchCard")]
+        public IHttpActionResult ZZKSwitchCard([FromUri] string OpenID,string toopenID, int CardID)
+        {
+            try
+            {
+                GiveCardRecord res = new GiveCardRecord();
+                if (CardID == 1) //数你富
+                {
+                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c1snf > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    user.c1snf -= 1;
+                    Touser.c1snf += 1;
+                 
+                    res.CardID = CardID;
+                    res.OpenID = OpenID;
+                    res.ToOpenID = toopenID.Trim();
+                    res.GiveTime = DateTime.Now;
+                    res.UserName = user.Name;
+                   
+
+                }
+                if (CardID == 2) //鼠你美
+                {
+                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c2snm > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    user.c2snm -= 1;
+                    Touser.c2snm += 1;
+                  
+                    res.CardID = CardID;
+                    res.OpenID = OpenID;
+                    res.ToOpenID = toopenID.Trim();
+                    res.GiveTime = DateTime.Now;
+                    res.UserName = user.Name;
+
+                }
+                if (CardID == 4) //鼠你强
+                {
+                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c3snq > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    user.c3snq -= 1;
+                    Touser.c3snq += 1;
+                   
+                    res.CardID = CardID;
+                    res.OpenID = OpenID;
+                    res.ToOpenID = toopenID.Trim();
+                    res.GiveTime = DateTime.Now;
+                    res.UserName = user.Name;
+
+                }
+                if (CardID == 5) //鼠你甜
+                {
+                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c5snt > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    user.c5snt -= 1;
+                    Touser.c5snt += 1;
+                 
+                    res.CardID = CardID;
+                    res.OpenID = OpenID;
+                    res.ToOpenID = toopenID.Trim();
+                    res.GiveTime = DateTime.Now;
+
+                }
+                if (CardID == 6) //鼠你乐
+                {
+                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c4snl > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    user.c4snl -= 1;
+                    Touser.c4snl += 1;
+                
+                    res.CardID = CardID;
+                    res.OpenID = OpenID;
+                    res.ToOpenID = toopenID.Trim();
+                    res.GiveTime = DateTime.Now;
+
+                }
+                if (CardID == 7)
+                {
+                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c6zzk > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    user.c6zzk -= 1;
+                    Touser.c6zzk += 1;
+                   
+                    res.CardID = CardID;
+                    res.OpenID = OpenID;
+                    res.ToOpenID = toopenID.Trim();
+                    res.GiveTime = DateTime.Now;
+
+
+
+                }
+
+                NY.GiveCardRecord.Add(res);
+
+
+                NY.SaveChanges();
+                return Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.OK, "卡片赠送成功", ""));
+
+            }
+            catch (Exception e)
+            {
+
+                return Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.BadRequest, "失败，问题见data", e));
+             
+            }
+
+           
+
+
+
+
+
+
+        }
+
+
+
+
+        /// <summary>
+        /// 用户收到赠送卡片列表
+        /// </summary>
+        /// <param name="OpenID"></param>
+        /// <returns></returns>
+
+        [HttpGet,Route("GetUserGivenList")]
+
+        public IHttpActionResult GetUserGivenList([FromUri] string OpenID )
+        {
+
+            var list = NY.GiveCardRecord.Where(a => a.ToOpenID == OpenID).Select(a => new
+            GetCardListDTO
+            {
+                ID=a.ID,
+              //  OpenID=a.OpenID,
+              
+                GiveTime=a.GiveTime,
+                UserName=a.UserName,
+               // CardID=a.CardID,
+                CardName=a.CardList.CardName
+                
+
+            
+            }
+            ).OrderByDescending(a => a.GiveTime).ThenByDescending(a=>a.ID).ToList();
+
+
+
+
+            return Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.OK, "用户收到赠送卡片列表",list));
+
+        }
+
+
+
+        /// <summary>
+        /// 查找要赠送用户的OpenID（赠送时需要这个API获取目标用户）
+        /// </summary>
+        /// <param name="Name">名字</param>
+        /// <param name="JObID">工号</param>
+        /// <returns></returns>
+        [HttpGet,Route("SearchUsers")]
+        [SwaggerResponse(HttpStatusCode.OK, Description = "200获取数据成功 404 找不到该用户可能该用户并没有参与游戏")]
+
+        public IHttpActionResult SearchUsers([FromUri] string Name ,string JObID)
+        {
+            var cc = NY.User.Where(a => a.JobID == JObID && a.Name == Name).FirstOrDefault();
+            if (cc==null)
+            {
+                return Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.NotFound, "没有找到该用户，可能该用户并没有参与游戏", ""));
+
+            }
+            else
+            {
+                return Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.OK, "找到用户返回ID", cc.OpenID));
+            }
+
+  
         }
 
 

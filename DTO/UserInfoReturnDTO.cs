@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewYear2020.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -113,6 +114,28 @@ namespace NewYear2020.DTO
 
 
 
+
+
+    }
+
+
+    /// <summary>
+    /// 赠卡返回
+    /// </summary>
+
+    public class GetCardListDTO
+    {
+
+        public int ID { get; set; }
+        public string OpenID { get; set; }
+        public string ToOpenID { get; set; }
+        public int CardID { get; set; }
+        public System.DateTime GiveTime { get; set; }
+        public string UserName { get; set; }
+        public string CardName { get; set; }
+
+        public virtual CardList CardList { get; set; }
+       
 
 
     }

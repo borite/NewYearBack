@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="F:\项目\伊利项目\new2020\NewYearBack\obj\Debug\Package\PackageTmp" />
+  <setAcl path="F:\项目\伊利项目\new2020\NewYearBack\obj\Debug\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="F:\项目\伊利项目\new2020\NewYearBack\obj\Debug\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

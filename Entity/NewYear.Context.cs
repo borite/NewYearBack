@@ -35,5 +35,6 @@ namespace NewYear2020.Entity
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<TimeRecord> TimeRecord { get; set; }
         public virtual DbSet<AiQiYi> AiQiYi { get; set; }
+        public virtual DbSet<GiveCardRecord> GiveCardRecord { get; set; }
     }
 }

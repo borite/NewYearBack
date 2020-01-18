@@ -130,6 +130,7 @@
     <Compile Include="Class\Common.cs" />
     <Compile Include="Class\lamada.cs" />
     <Compile Include="Class\swagger\SwaggerCacheProvider.cs" />
+    <Compile Include="Class\TimeManager.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="DTO\UserInfoReturnDTO.cs" />
     <Compile Include="Entity\AiQiYi.cs">
@@ -148,6 +149,9 @@
       <DependentUpon>NewYear.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\GameManager.cs">
+      <DependentUpon>NewYear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\GiveCardRecord.cs">
       <DependentUpon>NewYear.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\NewYear.Context.cs">
