@@ -1,0 +1,515 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NewYear2020</name>
+    </assembly>
+    <members>
+        <member name="M:NewYear2020.CachingSwaggerProvider.GetControllerDesc">
+            <summary>
+            从API文档中读取控制器描述
+            </summary>
+            <returns>所有控制器描述</returns>
+        </member>
+        <member name="T:NewYear2020.Controllers.GameController">
+            <summary>
+            游戏数据调取API
+            </summary>
+        </member>
+        <member name="M:NewYear2020.Controllers.GameController.GetQuestion">
+            <summary>
+            获取成语游戏数据的选项
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewYear2020.Controllers.GameController.CheckOpenID(System.String)">
+            <summary>
+            用户验证（判断该微信号是否注册过）
+            </summary>
+            <param name="Code">传入code获取openID</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewYear2020.Controllers.GameController.Register(NewYear2020.DTO.UserRegisterDTO)">
+            <summary>
+            注册
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewYear2020.Controllers.GameController.GetInfo(System.String)">
+            <summary>
+            通过OpenID获取个人信息
+            </summary>
+            <param name="OpenID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewYear2020.Controllers.GameController.ChouCard(System.String,System.Int32)">
+            <summary>
+            随机抽取一张卡片
+            </summary>
+            <param name="openID">微信openid</param>
+            <param name="GameType">游戏参数分别是1.2.3.4.5（代表5个游戏）</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewYear2020.Controllers.GameController.GetChou(System.String)">
+            <summary>
+            进行一次抽奖
+            </summary>
+            <param name="OpenID"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NewYear2020.DTO.UserInfoReturnDTO">
+            <summary>
+            返回字段说明
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.OpenID">
+            <summary>
+            openid
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.Phone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.JobID">
+            <summary>
+            工号
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.PrizeID">
+            <summary>
+            礼物ID
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.c1snf">
+            <summary>
+            鼠你富
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.c2snm">
+            <summary>
+            鼠你美
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.c3snq">
+            <summary>
+            鼠你强
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.c4snl">
+            <summary>
+            鼠你乐
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.c5snt">
+            <summary>
+            鼠你甜
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.c6zzk">
+            <summary>
+            尊重卡
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.aiqiyiKey">
+            <summary>
+            爱奇艺序列号
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.GetPrizeTime">
+            <summary>
+            获得礼物的时间
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.WeChatNickName">
+            <summary>
+            微信昵称
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserInfoReturnDTO.HeadIMG">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="T:NewYear2020.DTO.UserRegisterDTO">
+            <summary>
+            用户注册传入参数说明
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserRegisterDTO.OpenID">
+            <summary>
+            openid
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserRegisterDTO.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserRegisterDTO.Phone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserRegisterDTO.JobID">
+            <summary>
+            工号
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserRegisterDTO.WeChatNickName">
+            <summary>
+            微信昵称
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.UserRegisterDTO.HeadIMG">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.returnSussess(System.Object)">
+            <summary>
+            返回成功状态200 ，需要自己返回提示信息
+            </summary>
+            <param name="message">返回一些</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.returnSussess2(System.Object,System.Object)">
+            <summary>
+            成功2个参数
+            </summary>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.loginSuccessFirst(System.Object,System.Object)">
+            <summary>
+             这是第一次登陆201
+            </summary>
+            <param name="tokenVal">返回的token</param>
+            <param name="userInfo">返回的用户信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.Changepwd(System.Object)">
+            <summary>
+            更改密码成功202
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.loginSuccess(System.Object,System.Object)">
+            <summary>
+            登陆成功203
+            </summary>
+            <param name="tokenVal"></param>
+            <param name="userInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.returnFail(System.Object)">
+            <summary>
+            失败,返回500
+            </summary>
+            <param name="message">需要说明情况</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.InfoNull(System.Object)">
+            <summary>
+            上传信息不全501
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.yzmIsNull(System.Object)">
+            <summary>
+            验证码是空的，还有没有验证过502
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.registered(System.Object)">
+            <summary>
+            已经注册了503
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.yzmError(System.Object)">
+            <summary>
+            验证码错误504
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.yzmTimeError(System.Object)">
+            <summary>
+            验证码超时505
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.TokenIsNull(System.Object)">
+            <summary>
+            token是空的,没有找到506
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.TokenTimeExpiress(System.Object)">
+            <summary>
+            
+            token过期，重新登陆507
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.sendError(System.Object)">
+            <summary>
+            验证码发送失败508
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.AccountLocked(System.Object)">
+            <summary>
+            509账户被锁定
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.passwordError(System.Object)">
+            <summary>
+            密码输入错误510
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.AccountNull(System.Object)">
+            <summary>
+            没有找到该账户511
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.infoSecondError(System.Object)">
+            <summary>
+            错误通用2 512
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Code.duanxin(System.String)">
+            <summary>
+            判断阿里云是否发送成功的类 成功返回200，失败返回508
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="strJson"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.sha1(System.String)">
+            <summary>
+            SHA1加密
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.GetSession(System.String)">
+            <summary>
+            读取Session的值
+            </summary>
+            <param name="key">Session的键名</param>        
+        </member>
+        <member name="M:ChinaAudio.Class.Common.GetSessionType``1(System.String)">
+            <summary>
+            读取类型Session的值
+            </summary>
+            <param name="key">Session的键名</param>        
+        </member>
+        <member name="M:ChinaAudio.Class.Common.WriteSessionType``1(System.String,``0)">
+            <summary>
+            写入不同类型的Session 
+            </summary>
+            <typeparam name="T">Session键值的类型</typeparam>
+            <param name="key">Session的键名</param>
+            <param name="value">Session的键值</param>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.yzmRandom">
+            <summary>
+            生成六位随机验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.GuidFun">
+            <summary>
+            生成guid
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.Gener(System.String,System.Int32,System.Int32)">
+            <summary>
+            生成相对短一点的订单号
+            </summary>
+            <param name="mark">前缀</param>
+            <param name="timeType">时间精确类型  1 日,2 时,3 分，4 秒(默认) </param>
+            <param name="id">id 小于或等于0则随机生成id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.GenerLong(System.String,System.Int32,System.Int64)">
+            <summary>
+            生成长的订单号
+            </summary>
+            <param name="mark">前缀</param>
+            <param name="timeType">时间精确类型  1 日,2 时,3 分，4 秒(默认)</param>
+            <param name="id">id 小于或等于0则随机生成id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.GetTimeStr(System.Int32,System.Int32@)">
+            <summary>
+            获取时间字符串
+            </summary>
+            <param name="timeType">时间精确类型  1 日,2 时,3 分，4 秒(默认)</param>
+            <param name="fillCount">填充位数</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.ToJsonString``1(System.Collections.Generic.List{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T">传入数据的类型</typeparam>
+            <param name="list">把整理的</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.DateToNow(System.DateTime)">
+            <summary>
+            随机生成验证码
+            </summary>
+            <summary>
+            一个时间到现在过了多久（一天，一周，一月）
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.CompareDate(System.String,System.String)">
+            <summary>
+            日期比较
+            </summary>
+            <param name="today">当前日期</param>
+            <param name="writeDate">输入日期</param>
+            <param name="n">比较天数</param>
+            <returns>当前日期大（第一个参数大是false）， 写入天数大是true</returns>
+        </member>
+        <member name="P:ChinaAudio.Class.Common.yzmClass.Code">
+            <summary>
+            Code OK 表示发送成功 前端判断这里状态即可  一般短信过于频繁会报 如果遇到其他问题详见：https://help.aliyun.com/document_detail/101346.html?spm=a2c4g.11186623.6.621.24ce2246Fo3AOU
+            </summary>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.toGuidFun(System.String)">
+            <summary>
+            转guid
+            </summary>
+            <param name="guidval"></param>
+            <returns>返回guid格式</returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.GetOpenIDFun(System.String)">
+            <summary>
+            验证OpenID的方法
+            </summary>
+            <param name="Code"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ChinaAudio.Class.Common.TokenMessage.openid">
+            <summary>
+            openid
+            </summary>
+        </member>
+        <member name="F:ChinaAudio.Class.Common.TokenMessage.nickname">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="F:ChinaAudio.Class.Common.TokenMessage.headimgurl">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.CardManagerFun(System.String,System.Int32)">
+            <summary>
+            卡片增加方法 返回(null 库存空了不能抽奖 success成功结算库存用户+1  busy 请重新尝试，事务回滚或者发生并发 )
+            </summary>
+            <param name="openID"></param>
+            <param name="type">卡片类型：1鼠你富2.鼠你美4.鼠你强5.鼠你甜6.鼠你乐7.尊重卡</param>
+            <returns></returns>
+        </member>
+        <member name="T:ChinaAudio.Classes.CodeHeper.CodeNew.resultInfo">
+            <summary>
+            返回规定的一些字段
+            </summary>
+        </member>
+        <member name="P:ChinaAudio.Classes.CodeHeper.CodeNew.resultInfo.Code">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:ChinaAudio.Classes.CodeHeper.CodeNew.resultInfo.Message">
+            <summary>
+            信息提示
+            </summary>
+        </member>
+        <member name="P:ChinaAudio.Classes.CodeHeper.CodeNew.resultInfo.Data">
+            <summary>
+            返回数据
+            </summary>
+        </member>
+        <member name="M:ChinaAudio.Classes.CodeHeper.CodeNew.Successful(System.Object,System.Object)">
+            <summary>
+            成功后引用的方法
+            </summary>
+            <param name="message">返回message数据</param>
+            <param name="data">返回data数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Classes.CodeHeper.CodeNew.Success(System.Object,System.Object,System.Object)">
+            <summary>
+            成功新方法
+            </summary>
+            <param name="Code">状态传入</param>
+            <param name="message">信息传入</param>
+            <param name="data">数据传入</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Classes.CodeHeper.CodeNew.Bad(System.Object,System.Object)">
+            <summary>
+             请求失败
+            </summary>
+            <param name="message">返回message数据</param>
+            <param name="data">返回data数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:CABIProgram.Class.swagger.SwaggerCacheProvider">
+            <summary>
+            swagger显示控制器的描述
+            </summary>
+        </member>
+        <member name="M:CABIProgram.Class.swagger.SwaggerCacheProvider.#ctor(Swashbuckle.Swagger.ISwaggerProvider,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="swaggerProvider"></param>
+            <param name="xml">xml文档路径</param>
+        </member>
+        <member name="M:CABIProgram.Class.swagger.SwaggerCacheProvider.GetControllerDesc">
+            <summary>
+            从API文档中读取控制器描述
+            </summary>
+            <returns>所有控制器描述</returns>
+        </member>
+    </members>
+</doc>

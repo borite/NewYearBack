@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YL_NewYear2020Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="YL_NewYear2020Entities" annotation:LazyLoadingEnabled="false">
+    <EntitySet Name="CardList" EntityType="YL_NewYear2020Model.CardList" />
+    <EntitySet Name="Employing" EntityType="YL_NewYear2020Model.Employing" />
+    <EntitySet Name="ErrorText" EntityType="YL_NewYear2020Model.ErrorText" />
+    <EntitySet Name="Exam" EntityType="YL_NewYear2020Model.Exam" />
+    <EntitySet Name="GameManager" EntityType="YL_NewYear2020Model.GameManager" />
+    <EntitySet Name="PrizeList" EntityType="YL_NewYear2020Model.PrizeList" />
+    <EntitySet Name="User" EntityType="YL_NewYear2020Model.User" />
+    <AssociationSet Name="FK_User_PrizeList" Association="YL_NewYear2020Model.FK_User_PrizeList">
+      <End Role="PrizeList" EntitySet="PrizeList" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <EntitySet Name="TimeRecord" EntityType="YL_NewYear2020Model.TimeRecord" />
+    <EntitySet Name="AiQiYi" EntityType="YL_NewYear2020Model.AiQiYi" />
+  </EntityContainer>
+  <EntityType Name="CardList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CardName" Type="String" Nullable="false" MaxLength="500" FixedLength="true" Unicode="true" />
+    <Property Name="Total" Type="Int32" Nullable="false" />
+    <Property Name="TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Employing">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Section" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ErrorText">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContextVal" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Exam">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GameManager">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OpenID" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+    <Property Name="GameType" Type="Byte" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="PrizeList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrizeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PrizeCount" Type="Int32" Nullable="false" />
+    <Property Name="keyText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="YL_NewYear2020Model.FK_User_PrizeList" FromRole="PrizeList" ToRole="User" />
+    <Property Name="TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OpenID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="JobID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="PrizeID" Type="Int32" />
+    <Property Name="c1snf" Type="Int32" Nullable="false" />
+    <Property Name="c2snm" Type="Int32" Nullable="false" />
+    <Property Name="c3snq" Type="Int32" Nullable="false" />
+    <Property Name="c4snl" Type="Int32" Nullable="false" />
+    <Property Name="c5snt" Type="Int32" Nullable="false" />
+    <Property Name="c6zzk" Type="Int32" Nullable="false" />
+    <Property Name="aiqiyiKey" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+    <Property Name="GetPrizeTime" Type="DateTime" Precision="3" />
+    <Property Name="WeChatNickName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="HeadIMG" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="PrizeList" Relationship="YL_NewYear2020Model.FK_User_PrizeList" FromRole="User" ToRole="PrizeList" />
+    <Property Name="ISChou" Type="Boolean" Nullable="false" DefaultValue="false" />
+  </EntityType>
+  <Association Name="FK_User_PrizeList">
+    <End Type="YL_NewYear2020Model.PrizeList" Role="PrizeList" Multiplicity="0..1" />
+    <End Type="YL_NewYear2020Model.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrizeList">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="PrizeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TimeRecord">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OpenID" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="GameType" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AiQiYi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Keys" Type="String" Nullable="false" MaxLength="1000" FixedLength="true" Unicode="true" />
+    <Property Name="OpenID" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+    <Property Name="ChouTime" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>

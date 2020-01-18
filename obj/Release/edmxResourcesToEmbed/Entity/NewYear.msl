@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="YL_NewYear2020ModelStoreContainer" CdmEntityContainer="YL_NewYear2020Entities">
+    <EntitySetMapping Name="CardList">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.CardList">
+        <MappingFragment StoreEntitySet="CardList">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorText">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.ErrorText">
+        <MappingFragment StoreEntitySet="ErrorText">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ContextVal" ColumnName="ContextVal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.Exam">
+        <MappingFragment StoreEntitySet="Exam">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameManager">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.GameManager">
+        <MappingFragment StoreEntitySet="GameManager">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+          <ScalarProperty Name="GameType" ColumnName="GameType" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeList">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.PrizeList">
+        <MappingFragment StoreEntitySet="PrizeList">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PrizeName" ColumnName="PrizeName" />
+          <ScalarProperty Name="PrizeCount" ColumnName="PrizeCount" />
+          <ScalarProperty Name="keyText" ColumnName="keyText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="WeChatNickName" ColumnName="WeChatNickName" />
+          <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PrizeID" ColumnName="PrizeID" />
+          <ScalarProperty Name="c1snf" ColumnName="c1snf" />
+          <ScalarProperty Name="c2snm" ColumnName="c2snm" />
+          <ScalarProperty Name="c3snq" ColumnName="c3snq" />
+          <ScalarProperty Name="c4snl" ColumnName="c4snl" />
+          <ScalarProperty Name="c5snt" ColumnName="c5snt" />
+          <ScalarProperty Name="c6zzk" ColumnName="c6zzk" />
+          <ScalarProperty Name="aiqiyiKey" ColumnName="aiqiyiKey" />
+          <ScalarProperty Name="GetPrizeTime" ColumnName="GetPrizeTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employing">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.Employing">
+        <MappingFragment StoreEntitySet="Employing">
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
