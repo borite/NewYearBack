@@ -63,6 +63,8 @@
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="YL_NewYear2020Model.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
           <ScalarProperty Name="ISChou" ColumnName="ISChou" />
           <ScalarProperty Name="HeadIMG" ColumnName="HeadIMG" />
           <ScalarProperty Name="WeChatNickName" ColumnName="WeChatNickName" />

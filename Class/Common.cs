@@ -16,6 +16,7 @@ using NewYear2020.Entity;
 using System.Transactions;
 using ChinaAudio.Classes.CodeHeper;
 using System.Diagnostics.Contracts;
+using System.Collections;
 
 namespace ChinaAudio.Class
 {
@@ -521,13 +522,13 @@ namespace ChinaAudio.Class
 
                     //查找个人用户
                     var userAdd = NY.User.Where(a => a.OpenID == openID).First();
-                   
+
                     switch (type)
                     {
                         //鼠你富
                         case 1:
 
-                           
+
 
                             ////并发测试 进行第二个上下文并保存  第一个上下文数据不保存，放在下面的try尝试保存
                             //using (YL_NewYear2020Entities NYc = new YL_NewYear2020Entities())
@@ -560,7 +561,7 @@ namespace ChinaAudio.Class
                                 //  ts.Complete();
                                 return "busy";
                             }
-                           
+
 
 
                         case 2:
@@ -660,7 +661,7 @@ namespace ChinaAudio.Class
 
         //}
 
-        public  bool isToday(DateTime dt)
+        public static bool isToday(DateTime dt)
         {
             DateTime today = DateTime.Today;
             DateTime tempToday = new DateTime(dt.Year, dt.Month, dt.Day);
@@ -670,6 +671,208 @@ namespace ChinaAudio.Class
                 return false;
         }
 
+        /// <summary>
+        /// 全局时间管理
+        /// </summary>
+        /// <returns></returns>
+        public static dynamic TimeManager()
+        {
+            DateTime end1 = new DateTime(2020, 1, 18);
+            DateTime end21 = new DateTime(2020, 1, 19);
+            DateTime end22 = new DateTime(2020, 1, 20);
+            DateTime end23 = new DateTime(2020, 1, 23);
+            DateTime end24 = new DateTime(2020, 1, 24);
+
+
+            //时间判断布尔判断是否是今天
+            bool day20 = isToday(end1);
+            bool day21 = isToday(end21);
+            bool day22 = isToday(end22);
+            bool day23 = isToday(end23);
+            bool day24 = isToday(end24);
+            var ListVal = new { day20, day21, day22, day23, day24 };
+
+            //ArrayList TimeList = new ArrayList();
+            //TimeList.Add(ListVal);
+            return ListVal;
+
+
+
+        }
+
+        /// <summary>
+        /// 每日抽牌数量管理（全局）
+        /// </summary>
+
+        public class  CardManager
+        { 
+
+            /// <summary>
+            /// 20号抽牌限制 （低于8000不再抽该牌）
+            /// </summary>
+            public static int num20 = 8000;
+      
+            public static int num21 = 6000;
+            public static int num22 = 4000;
+             public static int num23 = 2000;
+            public static int num24 = 0;
+
+            //每天抽几次
+            DateTime nowtimeDate = DateTime.Now;
+            int rate = 2;
+
+
+        }
+
+
+        /// <summary>
+        /// 尊重卡使用，随机抽一张牌方法
+        /// </summary>
+        /// <param name="openID"></param>
+        /// <returns></returns>
+        public dynamic CardFun(string openID)
+        {
+           // int num20 = CardManager.num20;
+           // int num21 = CardManager.num21;
+           // int num22 = 4000;
+          //  int num23 = 2000;
+           // int num24 = 0;
+            var manager = TimeManager();
+            bool day20 = manager.day20;
+            bool day21 = manager.day21;
+            bool day22 = manager.day22;
+            bool day23 = manager.day23;
+            bool day24 = manager.day24;
+
+            //每天抽几次
+         //   DateTime nowtimeDate = DateTime.Now;
+           // int rate = 2;
+
+            using (YL_NewYear2020Entities NY = new YL_NewYear2020Entities())
+            {
+
+                if (day20) //20日
+                {
+                    //随机查询一个大于8000的卡片数量(20日规定的指定数量)
+                    var cc = NY.CardList.Where(a => a.Total >= CardManager.num20).OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+                  
+                    var res = CardManagerFun(openID, cc.ID);
+                    if (res == "success") //成功
+                    {
+                        
+                        NY.SaveChanges();
+
+
+
+                        return ( CodeNew.Success(HttpStatusCode.OK, "随机抽取一张卡片", cc.CardName.Trim()));
+
+                    }
+                    else// (res== "null"||res== "busy")
+                    {
+                        return (CodeNew.Success(HttpStatusCode.BadRequest, "服务器繁忙，请重新尝试（可能遇到了并发或者事务回滚）", ""));
+
+                    }
+
+                }
+
+                if (day21) //21日
+                {
+                    //随机查询一个大于8000的卡片数量(20日规定的指定数量)
+                    var cc = NY.CardList.Where(a => a.Total >= CardManager.num21).OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+
+                    var res =CardManagerFun(openID, cc.ID);
+                    if (res == "success") //成功
+                    {
+                       
+                        NY.SaveChanges();
+
+
+
+                        return ( CodeNew.Success(HttpStatusCode.OK, "随机抽取一张卡片", cc.CardName.Trim()));
+
+                    }
+                    else// (res== "null"||res== "busy")
+                    {
+                        return ( CodeNew.Success(HttpStatusCode.BadRequest, "服务器繁忙，请重新尝试（可能遇到了并发或者事务回滚）", ""));
+
+                    }
+
+                }
+                if (day22) //21日
+                {
+                    //随机查询一个大于8000的卡片数量(20日规定的指定数量)
+                    var cc = NY.CardList.Where(a => a.Total >= CardManager.num22).OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+
+                    var res = CardManagerFun(openID, cc.ID);
+                    if (res == "success") //成功
+                    {
+                        
+                        NY.SaveChanges();
+
+
+
+                        return ( CodeNew.Success(HttpStatusCode.OK, "随机抽取一张卡片", cc.CardName.Trim()));
+
+                    }
+                    else// (res== "null"||res== "busy")
+                    {
+                        return (CodeNew.Success(HttpStatusCode.BadRequest, "服务器繁忙，请重新尝试（可能遇到了并发或者事务回滚）", ""));
+
+                    }
+
+                }
+                if (day23) //21日
+                {
+                    //随机查询一个大于8000的卡片数量(20日规定的指定数量)
+                    var cc = NY.CardList.Where(a => a.Total >= CardManager.num23).OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+
+                    var res = CardManagerFun(openID, cc.ID);
+                    if (res == "success") //成功
+                    {
+                        
+                        NY.SaveChanges();
+
+
+
+                        return ( CodeNew.Success(HttpStatusCode.OK, "随机抽取一张卡片", cc.CardName.Trim()));
+
+                    }
+                    else// (res== "null"||res== "busy")
+                    {
+                        return ( CodeNew.Success(HttpStatusCode.BadRequest, "服务器繁忙，请重新尝试（可能遇到了并发或者事务回滚）", ""));
+
+                    }
+
+                }
+                if (day24) //21日
+                {
+                    //随机查询一个大于8000的卡片数量(20日规定的指定数量)
+                    var cc = NY.CardList.Where(a => a.Total >= CardManager.num24).OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+
+                    var res = CardManagerFun(openID, cc.ID);
+                    if (res == "success") //成功
+                    {
+                       
+                        NY.SaveChanges();
+
+
+
+                        return ( CodeNew.Success(HttpStatusCode.OK, "随机抽取一张卡片", cc.CardName.Trim()));
+
+                    }
+                    else// (res== "null"||res== "busy")
+                    {
+                        return (CodeNew.Success(HttpStatusCode.BadRequest, "服务器繁忙，请重新尝试（可能遇到了并发或者事务回滚）", ""));
+
+                    }
+
+                }
+                else
+                {
+                    return ( CodeNew.Success(HttpStatusCode.NotFound, "游戏活动时间已经结束 ,不能抽牌", ""));
+                }
+            }
+        }
 
 
 

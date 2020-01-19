@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="YL_NewYear2020Entities-Web.config Connection String" description="YL_NewYear2020Entities 由应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="metadata=res://*/Entity.NewYear.csdl|res://*/Entity.NewYear.ssdl|res://*/Entity.NewYear.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=39.104.205.226,49806\YBTSQLEXPRESS;initial catalog=YL_NewYear2020;user id=YL_progect;password=ybtylproject;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="F:\\项目\\伊利项目\\new2020\\NewYearBack\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='YL_NewYear2020Entities']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="F:\\刘赫阳的项目\\原本唐\\伊利\\2020新年游戏\\程序new\\NewYearBack\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='YL_NewYear2020Entities']/@connectionString" />
   </parameter>
 </parameters>

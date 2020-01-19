@@ -70,9 +70,9 @@ namespace NewYear2020.DTO
         /// 获得礼物的时间
         /// </summary>
         public Nullable<System.DateTime> GetPrizeTime { get; set; }
-     /// <summary>
-     /// 微信昵称
-     /// </summary>
+        /// <summary>
+        /// 微信昵称
+        /// </summary>
         public string WeChatNickName { get; set; }
         /// <summary>
         /// 头像
@@ -135,8 +135,49 @@ namespace NewYear2020.DTO
         public string CardName { get; set; }
 
         public virtual CardList CardList { get; set; }
-       
+
 
 
     }
+
+
+    /// <summary>
+    /// 用户送一张卡
+    /// </summary>
+    public class GivenCardDTO
+    {
+        /// <summary>
+        /// 发起赠送用户
+        /// </summary>
+        public string OpenID { get; set; }
+        /// <summary>
+        /// 被给与人用户
+        /// </summary>
+        public string toOpenID { get; set; }
+        /// <summary>
+        /// 1.属你富2.鼠你美4.鼠你强5.鼠你甜6.鼠你乐7.尊重卡
+        /// </summary>
+        public int CardID { get; set; }
+
+
+    }
+
+    /// <summary>
+    /// 中奖输入地址DTO
+    /// </summary>
+    public class AddressDTO
+    {
+        /// <summary>
+        /// 发起赠送用户
+        /// </summary>
+        public string OpenID { get; set; }
+        /// <summary>
+        /// 被给与人用户
+        /// </summary>
+        public string Address { get; set; }
+      
+
+
+    }
+
 }

@@ -157,6 +157,9 @@ namespace NewYear2020.Controllers
                     res.OpenID = obj.OpenID;
                     res.WeChatNickName = obj.WeChatNickName;
                     res.HeadIMG = obj.HeadIMG;
+                    res.Section = empolyCheck.Section;
+                    res.Department = empolyCheck.Department;
+                  //  res.   empolyCheck
                     NY.User.Add(res);
                     NY.SaveChanges();
                     return Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.OK, "注册成功，返回个人信息", res));
@@ -198,29 +201,32 @@ namespace NewYear2020.Controllers
         //public IHttpActionResult UpdateUserCardNum(string openid, int type)
         public IHttpActionResult ChouCard(string openID, int GameType)
         {
-            //五天日期
-            DateTime end1 = new DateTime(2020, 1, 18);
-            DateTime end21 = new DateTime(2020, 1, 19);
-            DateTime end22 = new DateTime(2020, 1, 20);
-            DateTime end23 = new DateTime(2020, 1, 23);
-            DateTime end24 = new DateTime(2020, 1, 24);
+            ////五天日期
+            //DateTime end1 = new DateTime(2020, 1, 18);
+            //DateTime end21 = new DateTime(2020, 1, 19);
+            //DateTime end22 = new DateTime(2020, 1, 20);
+            //DateTime end23 = new DateTime(2020, 1, 23);
+            //DateTime end24 = new DateTime(2020, 1, 24);
             //时间判断布尔判断是否是今天
-            bool day20 = common.isToday(end1);
-            bool day21 = common.isToday(end21);
-            bool day22 = common.isToday(end22);
-            bool day23 = common.isToday(end23);
-            bool day24 = common.isToday(end24);
+            var manager = TimeManager();
+            bool day20 = manager.day20;
+            bool day21 = manager.day21;
+            bool day22 = manager.day22;
+            bool day23 = manager.day23;
+            bool day24 = manager.day24;
             //数量判断
-            int num20 = 8000;
-            int num21 = 6000;
-
-            int num22 = 4000;
-            int num23 = 2000;
-            int num24 = 0;
+          //  int num20 = manager.day20; 
+            int num20 = CardManager.num20;
+            int num21 = CardManager.num21;
+            int num22 = CardManager.num22;
+            int num23 = CardManager.num23;
+            int num24 = CardManager.num24;
 
             //每天抽几次
             DateTime nowtimeDate = DateTime.Now;
             int rate = 2;
+
+
             //查找当天的抽奖次数 如果当天
             //var userChou = NY.TimeRecord.Where(a => a.OpenID == openID && EntityFunctions.TruncateTime(a.AddTime) == EntityFunctions.TruncateTime(end1)).ToList();
             //当天该用户的抽卡情况
@@ -435,10 +441,21 @@ namespace NewYear2020.Controllers
 
 
                         }
+                        cc.c1snf -= 1;
+                        cc.c2snm -= 1;
+                        cc.c3snq -= 1;
+                        cc.c4snl -= 1;
+                        cc.c5snt -= 1;
+                       
                         cc.PrizeID = chou.ID; //用户礼品赋值
                         cc.ISChou = true;  //抽奖状态更改                   
                         NY.Entry(cc).Property("PrizeID").IsModified = true;
                         NY.Entry(cc).Property("ISChou").IsModified = true;
+                        NY.Entry(cc).Property("c1snf").IsModified = true;
+                        NY.Entry(cc).Property("c2snm").IsModified = true;
+                        NY.Entry(cc).Property("c3snq").IsModified = true;
+                        NY.Entry(cc).Property("c4snl").IsModified = true;
+                        NY.Entry(cc).Property("c5snt").IsModified = true;
 
                         try
                         {
@@ -471,117 +488,129 @@ namespace NewYear2020.Controllers
         }
 
 
-        //尊重卡换一次抽卡的机会
-
-
-        //[HttpGet, Route("ZZKSwitchCard")]
-        //public IHttpActionResult ZZKSwitchCard([FromUri] string OpenID)
-        //{
-        //    var user = NY.User.Where(a => a.OpenID == OpenID && a.c6zzk > 0).FirstOrDefault();
-
-        //    user.c6zzk -= 1;
-        //    NY.SaveChanges();
-
-
-
-
-
-        //}
-
+      
 
         /// <summary>
-        /// 用户送卡
+        /// 尊重卡随机抽一张卡
         /// </summary>
-        /// <param name="OpenID">发起赠送的用户</param>
-        /// <param name="toopenID">被给予的用户</param>
-        /// <param name="CardID">1.属你富2.鼠你美4.鼠你强5.鼠你甜6.鼠你乐7.尊重卡</param>
+        /// <param name="OpenID"></param>
         /// <returns></returns>
-        [HttpGet, Route("ZZKSwitchCard")]
-        public IHttpActionResult ZZKSwitchCard([FromUri] string OpenID,string toopenID, int CardID)
+
+        [HttpGet,Route("UseZZK")]
+        public IHttpActionResult UseZZK([FromUri] string OpenID)
+        {
+            var user = NY.User.Where(a => a.OpenID == OpenID && a.c6zzk > 0).FirstOrDefault();
+            if (user==null)
+            {
+                return Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.BadRequest, "API错误，卡片没了就不能再换了，前端逻辑出问题了吧", ""));
+
+            }
+
+
+            user.c6zzk -= 1;
+          //  common.CardFun(user.OpenID);
+            NY.SaveChanges();
+           // return Content(common.CardFun(user.OpenID));
+            return Content(HttpStatusCode.OK, common.CardFun(user.OpenID));
+
+        }
+
+
+        
+        /// <summary>
+        /// 用户送一张卡
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        [HttpPost, Route("GiveCard")]
+        public IHttpActionResult GivenCard(GivenCardDTO obj)
         {
             try
             {
                 GiveCardRecord res = new GiveCardRecord();
-                if (CardID == 1) //数你富
+                if (obj.CardID == 1) //数你富
                 {
-                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c1snf > 0).FirstOrDefault();
-                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    var user = NY.User.Where(a => a.OpenID == obj. OpenID && a.c1snf > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == obj.toOpenID.Trim()).FirstOrDefault();
                     user.c1snf -= 1;
                     Touser.c1snf += 1;
                  
-                    res.CardID = CardID;
-                    res.OpenID = OpenID;
-                    res.ToOpenID = toopenID.Trim();
+                    res.CardID = obj.CardID;
+                    res.OpenID = obj.OpenID;
+                    res.ToOpenID = obj.toOpenID.Trim();
                     res.GiveTime = DateTime.Now;
                     res.UserName = user.Name;
                    
 
                 }
-                if (CardID == 2) //鼠你美
+                if (obj. CardID == 2) //鼠你美
                 {
-                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c2snm > 0).FirstOrDefault();
-                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    var user = NY.User.Where(a => a.OpenID == obj.OpenID && a.c2snm > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == obj.toOpenID.Trim()).FirstOrDefault();
                     user.c2snm -= 1;
                     Touser.c2snm += 1;
                   
-                    res.CardID = CardID;
-                    res.OpenID = OpenID;
-                    res.ToOpenID = toopenID.Trim();
+                    res.CardID =obj. CardID;
+                    res.OpenID = obj. OpenID;
+                    res.ToOpenID = obj. toOpenID.Trim();
                     res.GiveTime = DateTime.Now;
                     res.UserName = user.Name;
 
                 }
-                if (CardID == 4) //鼠你强
+                if (obj. CardID == 4) //鼠你强
                 {
-                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c3snq > 0).FirstOrDefault();
-                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    var user = NY.User.Where(a => a.OpenID == obj.OpenID && a.c3snq > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID ==obj. toOpenID.Trim()).FirstOrDefault();
                     user.c3snq -= 1;
                     Touser.c3snq += 1;
                    
-                    res.CardID = CardID;
-                    res.OpenID = OpenID;
-                    res.ToOpenID = toopenID.Trim();
+                    res.CardID = obj.CardID;
+                    res.OpenID = obj.OpenID;
+                    res.ToOpenID =obj. toOpenID.Trim();
                     res.GiveTime = DateTime.Now;
                     res.UserName = user.Name;
 
                 }
-                if (CardID == 5) //鼠你甜
+                if (obj.CardID == 5) //鼠你甜
                 {
-                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c5snt > 0).FirstOrDefault();
-                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    var user = NY.User.Where(a => a.OpenID == obj.OpenID && a.c5snt > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == obj.toOpenID.Trim()).FirstOrDefault();
                     user.c5snt -= 1;
                     Touser.c5snt += 1;
                  
-                    res.CardID = CardID;
-                    res.OpenID = OpenID;
-                    res.ToOpenID = toopenID.Trim();
+                    res.CardID = obj.CardID;
+                    res.OpenID = obj.OpenID;
+                    res.ToOpenID = obj.toOpenID.Trim();
                     res.GiveTime = DateTime.Now;
+                    res.UserName = user.Name;
 
                 }
-                if (CardID == 6) //鼠你乐
+                if (obj.CardID == 6) //鼠你乐
                 {
-                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c4snl > 0).FirstOrDefault();
-                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    var user = NY.User.Where(a => a.OpenID == obj.OpenID && a.c4snl > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == obj.toOpenID.Trim()).FirstOrDefault();
                     user.c4snl -= 1;
                     Touser.c4snl += 1;
                 
-                    res.CardID = CardID;
-                    res.OpenID = OpenID;
-                    res.ToOpenID = toopenID.Trim();
+                    res.CardID = obj.CardID;
+                    res.OpenID = obj.OpenID;
+                    res.ToOpenID = obj.toOpenID.Trim();
                     res.GiveTime = DateTime.Now;
+                    res.UserName = user.Name;
 
                 }
-                if (CardID == 7)
+                if (obj.CardID == 7)
                 {
-                    var user = NY.User.Where(a => a.OpenID == OpenID && a.c6zzk > 0).FirstOrDefault();
-                    var Touser = NY.User.Where(a => a.OpenID == toopenID.Trim()).FirstOrDefault();
+                    var user = NY.User.Where(a => a.OpenID == obj.OpenID && a.c6zzk > 0).FirstOrDefault();
+                    var Touser = NY.User.Where(a => a.OpenID == obj.toOpenID.Trim()).FirstOrDefault();
                     user.c6zzk -= 1;
                     Touser.c6zzk += 1;
                    
-                    res.CardID = CardID;
-                    res.OpenID = OpenID;
-                    res.ToOpenID = toopenID.Trim();
+                    res.CardID = obj.CardID;
+                    res.OpenID = obj.OpenID;
+                    res.ToOpenID = obj.toOpenID.Trim();
                     res.GiveTime = DateTime.Now;
+                    res.UserName = user.Name;
 
 
 
@@ -611,8 +640,6 @@ namespace NewYear2020.Controllers
         }
 
 
-
-
         /// <summary>
         /// 用户收到赠送卡片列表
         /// </summary>
@@ -620,7 +647,6 @@ namespace NewYear2020.Controllers
         /// <returns></returns>
 
         [HttpGet,Route("GetUserGivenList")]
-
         public IHttpActionResult GetUserGivenList([FromUri] string OpenID )
         {
 
@@ -647,8 +673,6 @@ namespace NewYear2020.Controllers
 
         }
 
-
-
         /// <summary>
         /// 查找要赠送用户的OpenID（赠送时需要这个API获取目标用户）
         /// </summary>
@@ -673,6 +697,33 @@ namespace NewYear2020.Controllers
 
   
         }
+
+
+
+        /// <summary>
+        /// 中奖后用户输入地址API
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        [HttpPut, Route("UpDateAddress")]
+        public IHttpActionResult UpDateAddress(AddressDTO obj)
+        {
+
+            var user = NY.User.Where(a => a.OpenID == obj.OpenID).FirstOrDefault();
+
+            user.Address = obj.Address;
+            NY.SaveChanges();
+          return Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.OK, "成功录入地址", ""));
+
+
+
+
+        }
+
+
+
+
+
 
 
     }

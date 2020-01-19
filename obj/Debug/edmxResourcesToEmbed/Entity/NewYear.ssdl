@@ -57,8 +57,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="OpenID" Type="nchar" MaxLength="1000" Nullable="false" />
-    <Property Name="ToOpenID" Type="nchar" MaxLength="1000" Nullable="false" />
+    <Property Name="OpenID" Type="nvarchar" MaxLength="500" />
+    <Property Name="ToOpenID" Type="nvarchar" MaxLength="500" />
     <Property Name="CardID" Type="int" Nullable="false" />
     <Property Name="GiveTime" Type="datetime" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -104,6 +104,8 @@
     <Property Name="WeChatNickName" Type="nvarchar" MaxLength="500" />
     <Property Name="HeadIMG" Type="nchar" MaxLength="1000" />
     <Property Name="ISChou" Type="bit" Nullable="false" />
+    <Property Name="Section" Type="nvarchar" MaxLength="50" />
+    <Property Name="Department" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_GiveCardRecord_CardList">
     <End Role="CardList" Type="Self.CardList" Multiplicity="1" />

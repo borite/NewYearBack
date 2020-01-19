@@ -62,8 +62,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OpenID" Type="nchar" MaxLength="1000" Nullable="false" />
-          <Property Name="ToOpenID" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="OpenID" Type="nvarchar" MaxLength="500" />
+          <Property Name="ToOpenID" Type="nvarchar" MaxLength="500" />
           <Property Name="CardID" Type="int" Nullable="false" />
           <Property Name="GiveTime" Type="datetime" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -109,6 +109,8 @@
           <Property Name="WeChatNickName" Type="nvarchar" MaxLength="500" />
           <Property Name="HeadIMG" Type="nchar" MaxLength="1000" />
           <Property Name="ISChou" Type="bit" Nullable="false" />
+          <Property Name="Section" Type="nvarchar" MaxLength="50" />
+          <Property Name="Department" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_GiveCardRecord_CardList">
           <End Role="CardList" Type="Self.CardList" Multiplicity="1" />
@@ -256,6 +258,8 @@
           <Property Name="HeadIMG" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="PrizeList" Relationship="YL_NewYear2020Model.FK_User_PrizeList" FromRole="User" ToRole="PrizeList" />
           <Property Name="ISChou" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_User_PrizeList">
           <End Type="YL_NewYear2020Model.PrizeList" Role="PrizeList" Multiplicity="0..1" />
@@ -292,8 +296,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OpenID" Type="String" Nullable="false" MaxLength="1000" FixedLength="true" Unicode="true" />
-          <Property Name="ToOpenID" Type="String" Nullable="false" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="OpenID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ToOpenID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="CardID" Type="Int32" Nullable="false" />
           <Property Name="GiveTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CardList" Relationship="YL_NewYear2020Model.FK_GiveCardRecord_CardList" FromRole="GiveCardRecord" ToRole="CardList" />
@@ -379,6 +383,8 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="YL_NewYear2020Model.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
                 <ScalarProperty Name="ISChou" ColumnName="ISChou" />
                 <ScalarProperty Name="HeadIMG" ColumnName="HeadIMG" />
                 <ScalarProperty Name="WeChatNickName" ColumnName="WeChatNickName" />

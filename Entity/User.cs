@@ -38,6 +38,8 @@ namespace NewYear2020.Entity
         public string WeChatNickName { get; set; }
         public string HeadIMG { get; set; }
         public bool ISChou { get; set; }
+        public string Section { get; set; }
+        public string Department { get; set; }
     
         public virtual PrizeList PrizeList { get; set; }
     }

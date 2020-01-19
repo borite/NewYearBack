@@ -56,13 +56,18 @@
             <param name="OpenID"></param>
             <returns></returns>
         </member>
-        <member name="M:NewYear2020.Controllers.GameController.ZZKSwitchCard(System.String,System.String,System.Int32)">
+        <member name="M:NewYear2020.Controllers.GameController.UseZZK(System.String)">
             <summary>
-            用户送卡
+            尊重卡随机抽一张卡
             </summary>
-            <param name="OpenID">发起赠送的用户</param>
-            <param name="toopenID">被给予的用户</param>
-            <param name="CardID">1.属你富2.鼠你美4.鼠你强5.鼠你甜6.鼠你乐7.尊重卡</param>
+            <param name="OpenID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewYear2020.Controllers.GameController.GivenCard(NewYear2020.DTO.GivenCardDTO)">
+            <summary>
+            用户送一张卡
+            </summary>
+            <param name="obj"></param>
             <returns></returns>
         </member>
         <member name="M:NewYear2020.Controllers.GameController.GetUserGivenList(System.String)">
@@ -78,6 +83,13 @@
             </summary>
             <param name="Name">名字</param>
             <param name="JObID">工号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewYear2020.Controllers.GameController.UpDateAddress(NewYear2020.DTO.AddressDTO)">
+            <summary>
+            中奖后用户输入地址API
+            </summary>
+            <param name="obj"></param>
             <returns></returns>
         </member>
         <member name="T:NewYear2020.DTO.UserInfoReturnDTO">
@@ -203,6 +215,41 @@
         <member name="T:NewYear2020.DTO.GetCardListDTO">
             <summary>
             赠卡返回
+            </summary>
+        </member>
+        <member name="T:NewYear2020.DTO.GivenCardDTO">
+            <summary>
+            用户送一张卡
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.GivenCardDTO.OpenID">
+            <summary>
+            发起赠送用户
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.GivenCardDTO.toOpenID">
+            <summary>
+            被给与人用户
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.GivenCardDTO.CardID">
+            <summary>
+            1.属你富2.鼠你美4.鼠你强5.鼠你甜6.鼠你乐7.尊重卡
+            </summary>
+        </member>
+        <member name="T:NewYear2020.DTO.AddressDTO">
+            <summary>
+            中奖输入地址DTO
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.AddressDTO.OpenID">
+            <summary>
+            发起赠送用户
+            </summary>
+        </member>
+        <member name="P:NewYear2020.DTO.AddressDTO.Address">
+            <summary>
+            被给与人用户
             </summary>
         </member>
         <member name="M:ChinaAudio.Class.Code.returnSussess(System.Object)">
@@ -475,6 +522,29 @@
             </summary>
             <param name="openID"></param>
             <param name="type">卡片类型：1鼠你富2.鼠你美4.鼠你强5.鼠你甜6.鼠你乐7.尊重卡</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.TimeManager">
+            <summary>
+            全局时间管理
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ChinaAudio.Class.Common.CardManager">
+            <summary>
+            每日抽牌数量管理（全局）
+            </summary>
+        </member>
+        <member name="F:ChinaAudio.Class.Common.CardManager.num20">
+            <summary>
+            20号抽牌限制 （低于8000不再抽该牌）
+            </summary>
+        </member>
+        <member name="M:ChinaAudio.Class.Common.CardFun(System.String)">
+            <summary>
+            尊重卡使用，随机抽一张牌方法
+            </summary>
+            <param name="openID"></param>
             <returns></returns>
         </member>
         <member name="T:ChinaAudio.Classes.CodeHeper.CodeNew.resultInfo">
