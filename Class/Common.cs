@@ -677,9 +677,9 @@ namespace ChinaAudio.Class
         /// <returns></returns>
         public static dynamic TimeManager()
         {
-            DateTime end1 = new DateTime(2020, 1, 18);
-            DateTime end21 = new DateTime(2020, 1, 19);
-            DateTime end22 = new DateTime(2020, 1, 20);
+            DateTime end1 = new DateTime(2020, 1, 20);
+            DateTime end21 = new DateTime(2020, 1, 21);
+            DateTime end22 = new DateTime(2020, 1, 22);
             DateTime end23 = new DateTime(2020, 1, 23);
             DateTime end24 = new DateTime(2020, 1, 24);
 
