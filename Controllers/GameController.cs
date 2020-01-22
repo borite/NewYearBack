@@ -349,7 +349,7 @@ namespace NewYear2020.Controllers
                 if (day24) //21日
                 {
                     //随机查询一个大于8000的卡片数量(20日规定的指定数量)
-                    var cc = NY.CardList.Where(a => a.Total >= num24).OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+                    var cc = NY.CardList.Where(a => a.Total > num24).OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
 
                     var res = common.CardManagerFun(openID, cc.ID);
                     if (res == "success") //成功

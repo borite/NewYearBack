@@ -1,12 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="YL_NewYear2020Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AiQiYi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Keys" Type="nchar" MaxLength="1000" Nullable="false" />
+    <Property Name="OpenID" Type="nchar" MaxLength="1000" />
+    <Property Name="ChouTime" Type="datetime" />
+  </EntityType>
   <EntityType Name="CardList">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CardName" Type="nchar" MaxLength="500" Nullable="false" />
+    <Property Name="CardName" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="Total" Type="int" Nullable="false" />
+    <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
   <EntityType Name="Employing">
     <Key>
@@ -42,6 +52,17 @@
     <Property Name="GameType" Type="tinyint" Nullable="false" />
     <Property Name="AddTime" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="GiveCardRecord">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpenID" Type="nvarchar" MaxLength="500" />
+    <Property Name="ToOpenID" Type="nvarchar" MaxLength="500" />
+    <Property Name="CardID" Type="int" Nullable="false" />
+    <Property Name="GiveTime" Type="datetime" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="PrizeList">
     <Key>
       <PropertyRef Name="ID" />
@@ -50,28 +71,54 @@
     <Property Name="PrizeName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="PrizeCount" Type="int" Nullable="false" />
     <Property Name="keyText" Type="nvarchar" MaxLength="50" />
+    <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TimeRecord">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddTime" Type="datetime" Nullable="false" />
+    <Property Name="OpenID" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="GameType" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpenID" Type="nvarchar" MaxLength="500" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Phone" Type="nchar" MaxLength="20" />
     <Property Name="JobID" Type="nvarchar" MaxLength="50" />
     <Property Name="Address" Type="nvarchar" MaxLength="2000" />
     <Property Name="PrizeID" Type="int" />
-    <Property Name="c1snf" Type="int" />
-    <Property Name="c2snm" Type="int" />
-    <Property Name="c3snq" Type="int" />
-    <Property Name="c4snl" Type="int" />
-    <Property Name="c5snt" Type="int" />
-    <Property Name="c6zzk" Type="int" />
+    <Property Name="c1snf" Type="int" Nullable="false" />
+    <Property Name="c2snm" Type="int" Nullable="false" />
+    <Property Name="c3snq" Type="int" Nullable="false" />
+    <Property Name="c4snl" Type="int" Nullable="false" />
+    <Property Name="c5snt" Type="int" Nullable="false" />
+    <Property Name="c6zzk" Type="int" Nullable="false" />
     <Property Name="aiqiyiKey" Type="nchar" MaxLength="1000" />
     <Property Name="GetPrizeTime" Type="datetime" />
-    <Property Name="OpenID" Type="nvarchar" MaxLength="500" />
     <Property Name="WeChatNickName" Type="nvarchar" MaxLength="500" />
+    <Property Name="HeadIMG" Type="nchar" MaxLength="1000" />
+    <Property Name="ISChou" Type="bit" Nullable="false" />
+    <Property Name="Section" Type="nvarchar" MaxLength="50" />
+    <Property Name="Department" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK_GiveCardRecord_CardList">
+    <End Role="CardList" Type="Self.CardList" Multiplicity="1" />
+    <End Role="GiveCardRecord" Type="Self.GiveCardRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardList">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GiveCardRecord">
+        <PropertyRef Name="CardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_User_PrizeList">
     <End Role="PrizeList" Type="Self.PrizeList" Multiplicity="0..1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -85,13 +132,20 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="YL_NewYear2020ModelStoreContainer">
+    <EntitySet Name="AiQiYi" EntityType="Self.AiQiYi" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CardList" EntityType="Self.CardList" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employing" EntityType="Self.Employing" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ErrorText" EntityType="Self.ErrorText" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GameManager" EntityType="Self.GameManager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiveCardRecord" EntityType="Self.GiveCardRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PrizeList" EntityType="Self.PrizeList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TimeRecord" EntityType="Self.TimeRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_GiveCardRecord_CardList" Association="Self.FK_GiveCardRecord_CardList">
+      <End Role="CardList" EntitySet="CardList" />
+      <End Role="GiveCardRecord" EntitySet="GiveCardRecord" />
+    </AssociationSet>
     <AssociationSet Name="FK_User_PrizeList" Association="Self.FK_User_PrizeList">
       <End Role="PrizeList" EntitySet="PrizeList" />
       <End Role="User" EntitySet="User" />

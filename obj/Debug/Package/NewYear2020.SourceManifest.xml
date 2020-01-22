@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="F:\刘赫阳的项目\原本唐\伊利\2020新年游戏\程序new\NewYearBack\obj\Debug\Package\PackageTmp" />
+  <setAcl path="F:\刘赫阳的项目\原本唐\伊利\2020新年游戏\程序new\NewYearBack\obj\Debug\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="F:\刘赫阳的项目\原本唐\伊利\2020新年游戏\程序new\NewYearBack\obj\Debug\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

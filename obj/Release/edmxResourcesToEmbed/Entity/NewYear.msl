@@ -4,68 +4,10 @@
     <EntitySetMapping Name="CardList">
       <EntityTypeMapping TypeName="YL_NewYear2020Model.CardList">
         <MappingFragment StoreEntitySet="CardList">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
           <ScalarProperty Name="Total" ColumnName="Total" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ErrorText">
-      <EntityTypeMapping TypeName="YL_NewYear2020Model.ErrorText">
-        <MappingFragment StoreEntitySet="ErrorText">
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ContextVal" ColumnName="ContextVal" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Exam">
-      <EntityTypeMapping TypeName="YL_NewYear2020Model.Exam">
-        <MappingFragment StoreEntitySet="Exam">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Question" ColumnName="Question" />
-          <ScalarProperty Name="Answer" ColumnName="Answer" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="GameManager">
-      <EntityTypeMapping TypeName="YL_NewYear2020Model.GameManager">
-        <MappingFragment StoreEntitySet="GameManager">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="OpenID" ColumnName="OpenID" />
-          <ScalarProperty Name="GameType" ColumnName="GameType" />
-          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PrizeList">
-      <EntityTypeMapping TypeName="YL_NewYear2020Model.PrizeList">
-        <MappingFragment StoreEntitySet="PrizeList">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="PrizeName" ColumnName="PrizeName" />
-          <ScalarProperty Name="PrizeCount" ColumnName="PrizeCount" />
-          <ScalarProperty Name="keyText" ColumnName="keyText" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="User">
-      <EntityTypeMapping TypeName="YL_NewYear2020Model.User">
-        <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="WeChatNickName" ColumnName="WeChatNickName" />
-          <ScalarProperty Name="OpenID" ColumnName="OpenID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="JobID" ColumnName="JobID" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="PrizeID" ColumnName="PrizeID" />
-          <ScalarProperty Name="c1snf" ColumnName="c1snf" />
-          <ScalarProperty Name="c2snm" ColumnName="c2snm" />
-          <ScalarProperty Name="c3snq" ColumnName="c3snq" />
-          <ScalarProperty Name="c4snl" ColumnName="c4snl" />
-          <ScalarProperty Name="c5snt" ColumnName="c5snt" />
-          <ScalarProperty Name="c6zzk" ColumnName="c6zzk" />
-          <ScalarProperty Name="aiqiyiKey" ColumnName="aiqiyiKey" />
-          <ScalarProperty Name="GetPrizeTime" ColumnName="GetPrizeTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -76,6 +18,102 @@
           <ScalarProperty Name="Section" ColumnName="Section" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorText">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.ErrorText">
+        <MappingFragment StoreEntitySet="ErrorText">
+          <ScalarProperty Name="ContextVal" ColumnName="ContextVal" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.Exam">
+        <MappingFragment StoreEntitySet="Exam">
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameManager">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.GameManager">
+        <MappingFragment StoreEntitySet="GameManager">
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="GameType" ColumnName="GameType" />
+          <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeList">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.PrizeList">
+        <MappingFragment StoreEntitySet="PrizeList">
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="keyText" ColumnName="keyText" />
+          <ScalarProperty Name="PrizeCount" ColumnName="PrizeCount" />
+          <ScalarProperty Name="PrizeName" ColumnName="PrizeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
+          <ScalarProperty Name="ISChou" ColumnName="ISChou" />
+          <ScalarProperty Name="HeadIMG" ColumnName="HeadIMG" />
+          <ScalarProperty Name="WeChatNickName" ColumnName="WeChatNickName" />
+          <ScalarProperty Name="GetPrizeTime" ColumnName="GetPrizeTime" />
+          <ScalarProperty Name="aiqiyiKey" ColumnName="aiqiyiKey" />
+          <ScalarProperty Name="c6zzk" ColumnName="c6zzk" />
+          <ScalarProperty Name="c5snt" ColumnName="c5snt" />
+          <ScalarProperty Name="c4snl" ColumnName="c4snl" />
+          <ScalarProperty Name="c3snq" ColumnName="c3snq" />
+          <ScalarProperty Name="c2snm" ColumnName="c2snm" />
+          <ScalarProperty Name="c1snf" ColumnName="c1snf" />
+          <ScalarProperty Name="PrizeID" ColumnName="PrizeID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeRecord">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.TimeRecord">
+        <MappingFragment StoreEntitySet="TimeRecord">
+          <ScalarProperty Name="GameType" ColumnName="GameType" />
+          <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AiQiYi">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.AiQiYi">
+        <MappingFragment StoreEntitySet="AiQiYi">
+          <ScalarProperty Name="ChouTime" ColumnName="ChouTime" />
+          <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+          <ScalarProperty Name="Keys" ColumnName="Keys" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GiveCardRecord">
+      <EntityTypeMapping TypeName="YL_NewYear2020Model.GiveCardRecord">
+        <MappingFragment StoreEntitySet="GiveCardRecord">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="GiveTime" ColumnName="GiveTime" />
+          <ScalarProperty Name="CardID" ColumnName="CardID" />
+          <ScalarProperty Name="ToOpenID" ColumnName="ToOpenID" />
+          <ScalarProperty Name="OpenID" ColumnName="OpenID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

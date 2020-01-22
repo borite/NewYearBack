@@ -677,11 +677,11 @@ namespace ChinaAudio.Class
         /// <returns></returns>
         public static dynamic TimeManager()
         {
-            DateTime end1 = new DateTime(2020, 1, 20);
-            DateTime end21 = new DateTime(2020, 1, 21);
-            DateTime end22 = new DateTime(2020, 1, 22);
-            DateTime end23 = new DateTime(2020, 1, 23);
-            DateTime end24 = new DateTime(2020, 1, 24);
+            DateTime end1 = new DateTime(2020, 1, 21);
+            DateTime end21 = new DateTime(2020, 1, 22);
+            DateTime end22 = new DateTime(2020, 1, 23);
+            DateTime end23 = new DateTime(2020, 1, 24);
+            DateTime end24 = new DateTime(2020, 1, 25);
 
 
             //时间判断布尔判断是否是今天
@@ -710,11 +710,11 @@ namespace ChinaAudio.Class
             /// <summary>
             /// 20号抽牌限制 （低于8000不再抽该牌）
             /// </summary>
-            public static int num20 = 8000;
+            public static int num20 = 8500; //发1500张
       
-            public static int num21 = 6000;
-            public static int num22 = 4000;
-             public static int num23 = 2000;
+            public static int num21 = 6500; //发2000张
+            public static int num22 = 4000; //发2500张
+             public static int num23 = 1000; //发3000张
             public static int num24 = 0;
 
             //每天抽几次
@@ -847,7 +847,7 @@ namespace ChinaAudio.Class
                 if (day24) //21日
                 {
                     //随机查询一个大于8000的卡片数量(20日规定的指定数量)
-                    var cc = NY.CardList.Where(a => a.Total >= CardManager.num24).OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+                    var cc = NY.CardList.Where(a => a.Total >CardManager.num24).OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
 
                     var res = CardManagerFun(openID, cc.ID);
                     if (res == "success") //成功

@@ -5,14 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d6cc3bc2e29a443582ce4c24ad7aa944" Name="Diagram1">
-        <EntityTypeShape EntityType="YL_NewYear2020Model.CardList" Width="1.5" PointX="7.5" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="YL_NewYear2020Model.ErrorText" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="YL_NewYear2020Model.Exam" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="YL_NewYear2020Model.GameManager" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="YL_NewYear2020Model.PrizeList" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="YL_NewYear2020Model.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="YL_NewYear2020Model.FK_User_PrizeList" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="YL_NewYear2020Model.Employing" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="YL_NewYear2020Model.CardList" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="YL_NewYear2020Model.Employing" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="YL_NewYear2020Model.ErrorText" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="YL_NewYear2020Model.Exam" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="YL_NewYear2020Model.GameManager" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="YL_NewYear2020Model.PrizeList" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="YL_NewYear2020Model.User" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="YL_NewYear2020Model.FK_User_PrizeList" />
+        <EntityTypeShape EntityType="YL_NewYear2020Model.TimeRecord" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="YL_NewYear2020Model.AiQiYi" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="YL_NewYear2020Model.GiveCardRecord" Width="1.5" PointX="8.375" PointY="3.75" />
+        <AssociationConnector Association="YL_NewYear2020Model.FK_GiveCardRecord_CardList" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
