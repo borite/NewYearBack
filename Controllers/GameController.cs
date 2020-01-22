@@ -721,6 +721,48 @@ namespace NewYear2020.Controllers
         }
 
 
+        /// <summary>
+        /// 卡片发放情况
+        /// </summary>
+        /// <returns></returns>
+
+        [HttpGet ,Route("CardNum")]
+        public IHttpActionResult CardNum()
+        {
+
+            var cc = NY.CardList.OrderByDescending(a => a.ID).ToList();
+         return   Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.OK, "成功查询卡片数量", cc));
+
+        }
+        /// <summary>
+        /// 奖品发放情况
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, Route("PrizeNum")]
+        public IHttpActionResult PrizeNum()
+        {
+
+            var cc = NY.PrizeList.OrderByDescending(a => a.ID).ToList();
+            return Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.OK, "成功查询奖品剩余数量", cc));
+
+        }
+        /// <summary>
+        /// 参与总人数
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, Route("UserCount")]
+        public IHttpActionResult UserCount()
+        {
+
+            var cc = NY.User.Count();
+            return Content(HttpStatusCode.OK, CodeNew.Success(HttpStatusCode.OK, "用户参与总人数", cc));
+
+        }
+
+
+ 
+      
+
 
 
 

@@ -92,6 +92,24 @@
             <param name="obj"></param>
             <returns></returns>
         </member>
+        <member name="M:NewYear2020.Controllers.GameController.CardNum">
+            <summary>
+            卡片发放情况
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewYear2020.Controllers.GameController.PrizeNum">
+            <summary>
+            奖品发放情况
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewYear2020.Controllers.GameController.UserCount">
+            <summary>
+            参与总人数
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:NewYear2020.DTO.UserInfoReturnDTO">
             <summary>
             返回字段说明
